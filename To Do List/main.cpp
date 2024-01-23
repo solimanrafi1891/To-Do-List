@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-// Node structure for the linked list
+
 struct Node
 {
     int taskId;
