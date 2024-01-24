@@ -13,6 +13,40 @@ struct Node
 
 class ToDoList
 {
+private:
+    Node* head;
+public:
+    ToDoList()
+    {
+        head = nullptr;
+    }
+
+    //Add Task Function is for Adding new task
+
+    void AddTask(int TaskId, string TaskName)
+    {
+        Node* NewTask = new Node;
+        NewTask->TaskId = TaskId;
+        NewTask->TaskName = TaskName;
+        NewTask->completed = false;
+        NewTask->next = nullptr;
+
+        if (head == nullptr)
+        {
+            head = NewTask;
+        }
+        else
+        {
+            Node* temp = head;
+            while (temp->next != nullptr)
+            {
+                temp = temp->next;
+            }
+            temp->next = NewTask;
+        }
+
+        cout << "Task added successfully!" << endl;
+    }
 
 };
 
