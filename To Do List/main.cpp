@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
+
 using namespace std;
 
-
+/*
 struct Node
 {
     int taskId;
@@ -50,8 +51,61 @@ public:
 
 };
 
+    // Update Task
+    void UPTask(int TaskId, string NTName) //( UP = Update Task ... NT = New Task )
+    {
+        Node* temp = head;
+        while (temp != nullptr)
+        {
+            if (temp->TaskId == TaskId)
+            {
+                temp->TaskName = NTName;
+                cout << "Task updated successfully!" << endl;
+                return;
+            }
+            temp = temp->next;
+        }
 
+        cout << "Task not found!" << endl;
+    }
 
+    //Delete Task
+    void DTask(int TaskId)   // DTask = Delete Task
+    {
+        if (head == nullptr)
+        {
+            cout << "Task list is empty!" << endl;
+            return;
+        }
+
+        Node* temp = head;
+        Node* prev = nullptr;
+
+        while (temp != nullptr)
+        {
+            if (temp->TaskId == TaskId)
+            {
+                if (prev == nullptr)
+                {
+                    head = temp->next;
+                }
+                else
+                {
+                    prev->next = temp->next;
+                }
+                delete temp;
+                cout << "Task deleted successfully!" << endl;
+                return;
+            }
+
+            prev = temp;
+            temp = temp->next;
+        }
+
+        cout << "Task not found!" << endl;
+    }
+
+*/
 int main()
 {
     cout << "To Do List project" << endl;
