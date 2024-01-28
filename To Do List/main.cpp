@@ -4,6 +4,7 @@
 using namespace std;
 
 /*
+
 struct Node
 {
     int taskId;
@@ -105,7 +106,49 @@ public:
         cout << "Task not found!" << endl;
     }
 
-*/
+
+    // Display all Tasks
+    void DATasks()  //( DA = Display All)
+    {
+        if (head == nullptr)
+        {
+            cout << "Task list is empty!" << endl;
+            return;
+        }
+
+        Node* temp = head;
+        while (temp != nullptr)
+        {
+            cout << "Task ID: " << temp->TaskId << " | Task Name: " << temp->TaskName << " | Completed: " << (temp->completed ? "Yes" : "No") << endl;
+            temp = temp->next;
+        }
+    }
+
+
+    //Display Completed Tasks
+    void DCTasks()  //( DC = Display Completed )
+    {
+        if (head == nullptr)
+        {
+            cout << "Task list is empty!" << endl;
+            return;
+        }
+
+        Node* temp = head;
+        while (temp != nullptr)
+        {
+            if (temp->completed)
+            {
+                cout << "Task ID: " << temp->TaskId << " | Task Name: " << temp->TaskName << " | Completed: Yes" << endl;
+            }
+            temp = temp->next;
+        }
+    }
+
+
+    */
+
+
 int main()
 {
     cout << "To Do List project" << endl;
