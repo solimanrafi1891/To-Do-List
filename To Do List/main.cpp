@@ -3,12 +3,11 @@
 
 using namespace std;
 
-/*
 
 struct Node
 {
-    int taskId;
-    string taskName;
+    int TaskId;
+    string TaskName;
     bool completed;
     Node* next;
 };
@@ -50,9 +49,7 @@ public:
         cout << "Task added successfully!" << endl;
     }
 
-};
-
-    // Update Task
+        // Update Task
     void UPTask(int TaskId, string NTName) //( UP = Update Task ... NT = New Task )
     {
         Node* temp = head;
@@ -108,7 +105,7 @@ public:
 
 
     // Display all Tasks
-    void DATasks()  //( DA = Display All)
+    void DATask()  //( DA = Display All)
     {
         if (head == nullptr)
         {
@@ -126,7 +123,7 @@ public:
 
 
     //Display Completed Tasks
-    void DCTasks()  //( DC = Display Completed )
+    void DCTask()  //( DC = Display Completed )
     {
         if (head == nullptr)
         {
@@ -145,12 +142,84 @@ public:
         }
     }
 
+    //Mark Task as completed
+    void MC(int TaskId)   //( MC = Mark Completed Task )
+    {
+        Node* temp = head;
+        while (temp != nullptr)
+        {
+            if (temp->TaskId == TaskId)
+            {
+                temp->completed = true;
+                cout << "Task marked as completed!" << endl;
+                return;
+            }
+            temp = temp->next;
+        }
 
-    */
+        cout << "Task not found!" << endl;
+    }
+
+};
+
+
 
 
 int main()
 {
-    cout << "To Do List project" << endl;
+    ToDoList toDoList;
+    int Choice, TaskId;
+    string TaskName, NTName;
+
+    do
+    {
+        cout << "\n==== To-Do List ====" << endl;
+        cout << "1. Add Task\n2. Update Task\n3. Delete Task\n4. Display All Tasks\n5. Display Completed Tasks\n6. Mark Task as Completed\n0. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> Choice;
+
+        switch (Choice)
+        {
+        case 1:
+            cout << "Enter Task ID: ";
+            cin >> TaskId;
+            cout << "Enter Task Name: ";
+            cin.ignore();
+            getline(cin, TaskName);
+            toDoList.AddTask(TaskId, TaskName);
+            break;
+        case 2:
+            cout << "Enter Task ID to update: ";
+            cin >> TaskId;
+            cout << "Enter New Task Name: ";
+            cin.ignore();
+            getline(cin, NTName);
+            toDoList.UPTask(TaskId, NTName);
+            break;
+        case 3:
+            cout << "Enter Task ID to delete: ";
+            cin >> TaskId;
+            toDoList.DTask(TaskId);
+            break;
+        case 4:
+            toDoList.DATask();
+            break;
+        case 5:
+            toDoList.DCTask();
+            break;
+        case 6:
+            cout << "Enter Task ID to mark as completed: ";
+            cin >> TaskId;
+            toDoList.MC(TaskId);
+            break;
+        case 0:
+            cout << "Exiting program. Thank you!\n";
+            break;
+        default:
+            cout << "Invalid choice. Please try again.\n";
+        }
+    }
+    while (Choice != 0);
+
     return 0;
 }
